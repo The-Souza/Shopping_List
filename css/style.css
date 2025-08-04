@@ -1,0 +1,112 @@
+:root {
+    --dark-navy: #2b2d42;
+    --gray-slate: #8d99ae;
+    --white-smoke: #edf2f4;
+    --red-vibrant: #ef233c;
+    --red-deep: #d90429;
+}
+
+body {
+    background-color: var(--dark-navy);
+}
+
+.card {
+    background-color: var(--white-smoke);
+    color: var(--dark-navy);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.25);
+}
+
+.form-control {
+    border: 2px solid var(--gray-slate);
+    border-radius: 6px;
+    background-color: white;
+    color: var(--dark-navy);
+}
+
+.form-control:focus {
+    border-color: var(--red-vibrant);
+    box-shadow: 0 0 0 0.25rem rgba(239, 35, 60, 0.25);
+}
+
+input::placeholder {
+    color: var(--gray-slate);
+    opacity: 0.8;
+    font-style: italic;
+}
+
+input:hover {
+    border-color: var(--light-blue);
+    box-shadow: 0 0 0 0.15rem rgba(108, 166, 193, 0.3);
+}
+
+.list-group-item {
+    background-color: white;
+    border: 2px solid var(--gray-slate);
+    color: var(--dark-navy);
+    transition: all 0,2s ease-in-out;
+}
+
+.btn-add {
+    background-color: var(--red-vibrant);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+}
+
+.btn-add:hover {
+    background-color: var(--red-deep);
+}
+
+.btn-add:focus {
+    box-shadow: 0 0 0 0.2rem rgba(239, 35, 60, 0.4);
+    outline: none;
+}
+
+.btn-add:active {
+    background-color: #b00220;
+    transform: scale(0.97);
+}
+
+.btn-buy {
+  background-color: #e1f7ec;
+  color: #2ECC71;
+  border: 2px solid #2ECC71;
+  border-radius: 6px;
+  transition: all 0.2s ease-in-out;
+}
+
+.btn-buy:hover {
+  background-color: #2ECC71;
+  color: white;
+}
+
+.btn-buy:active {
+  background-color: #27AE60;
+  transform: scale(0.97);
+  box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+}
+
+.bougth span{
+    text-decoration: line-through;
+    opacity: 0.6;
+}
+
+.btn-delete {
+    background-color: #fbeaec;
+    color: var(--red-deep);
+    border: 2px solid var(--red-deep);
+    border-radius: 6px;
+    transition: all 0.2s ease-in-out;
+}
+
+.btn-delete:hover {
+    background-color: var(--red-deep);
+    color: white;
+}
+
+.btn-delete:active {
+    background-color: #96031a;
+    transform: scale(0.97);
+    box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+}
