@@ -5,20 +5,22 @@ interface ShoppingListItem {
   bought?: boolean;
 }
 
-const shoppingListForm = document.getElementById(
-  "shopping-list-form"
-) as HTMLFormElement;
-const shoppingList = document.getElementById(
-  "shopping-list"
-) as HTMLUListElement;
+const shoppingListForm = document.getElementById("shopping-list-form") as HTMLFormElement;
+const shoppingList = document.getElementById("shopping-list") as HTMLUListElement;
 const InputItem = document.getElementById("item") as HTMLInputElement;
 const InputQuantity = document.getElementById("quantity") as HTMLInputElement;
-const IncreaseBtn = document.getElementById(
-  "increase-btn"
-) as HTMLButtonElement;
-const DecreaseBtn = document.getElementById(
-  "decrease-btn"
-) as HTMLButtonElement;
+const IncreaseBtn = document.getElementById("btn-increase") as HTMLButtonElement;
+const DecreaseBtn = document.getElementById("btn-decrease") as HTMLButtonElement;
+
+const editItemNameInput = document.getElementById("editItemName") as HTMLInputElement;
+const editItemQtyInput = document.getElementById("editItemQty") as HTMLInputElement;
+const editIncreaseBtn = document.getElementById("edit-btn-increase") as HTMLButtonElement;
+const editDecreaseBtn = document.getElementById("edit-btn-decrease") as HTMLButtonElement;
+const saveEditBtn = document.getElementById("saveEditBtn") as HTMLButtonElement;
+const editModalElement = document.getElementById("editModal")!;
+const editModal = new (window as any).bootstrap.Modal(editModalElement);
+
+let currentEditId: string | null = null;
 
 IncreaseBtn.addEventListener("click", () => {
   let value = parseInt(InputQuantity.value, 10);
@@ -31,6 +33,22 @@ DecreaseBtn.addEventListener("click", () => {
     InputQuantity.value = (value - 1).toString();
   }
 });
+
+editIncreaseBtn.addEventListener("click", () => {
+  let value = parseInt(editItemQtyInput.value, 10) || 0;
+  editItemQtyInput.value = (value + 1).toString();
+});
+
+editDecreaseBtn.addEventListener("click", () => {
+  let value = parseInt(editItemQtyInput.value, 10) || 0;
+  if (value > 1) {
+    editItemQtyInput.value = (value - 1).toString();
+  }
+});
+
+const isValidItemName = (name: string): boolean => {
+  return /[a-zA-Z]/.test(name);
+};
 
 const loadItems = (): ShoppingListItem[] => {
   const items = localStorage.getItem("items");
@@ -74,15 +92,6 @@ const editItem = (id: string, newName: string, bought?: boolean) => {
   }
 };
 
-const editFullItem = (updated: ShoppingListItem) => {
-  const items = loadItems();
-  const index = items.findIndex((i) => i.id === updated.id);
-  if (index !== -1) {
-    items[index] = updated;
-    saveItems(items);
-  }
-};
-
 const renderItems = () => {
   const items = loadItems();
   shoppingList.innerHTML = "";
@@ -92,7 +101,7 @@ const renderItems = () => {
       "list-group-item d-flex justify-content-between align-items-center";
 
     li.innerHTML = `
-            <span class="text-capitalize">${item.name} - x${item.quantity}</span>
+            <span class="text-capitalize">${item.name} (Qty: ${item.quantity})</span>
             <div class="d-flex justify-content-end align-items-center gap-2" aria-label="Mark as Purchased">
                 <button class="btn-buy btn btn-sm">
                     <i class="bi bi-cash-coin fs-5"></i>
@@ -121,40 +130,50 @@ const renderItems = () => {
     });
 
     li.addEventListener("dblclick", () => {
-      const newName = prompt("Enter new name:", item.name);
-      if (newName === null || newName.trim() === "") return;
-
-      const newQuantityStr = prompt(
-        "Enter new quantity:",
-        item.quantity.toString()
-      );
-      const newQuantity = parseInt(newQuantityStr || "", 10);
-
-      if (!isNaN(newQuantity) && newQuantity > 0) {
-        const updatedItem = {
-          ...item,
-          name: newName.trim(),
-          quantity: newQuantity,
-        };
-        editFullItem(updatedItem);
-        renderItems();
-      } else {
-        alert("Invalid quantity. Try again.");
-      }
+      currentEditId = item.id;
+      editItemNameInput.value = item.name;
+      editItemQtyInput.value = item.quantity.toString();
+      editModal.show();
     });
 
     shoppingList.appendChild(li);
   });
 };
 
+saveEditBtn.addEventListener("click", () => {
+  const newName = editItemNameInput.value.trim();
+  const newQty = parseInt(editItemQtyInput.value.trim(), 10);
+
+  if (!newName || isNaN(newQty) || newQty < 1 || !currentEditId) {
+    alert("Please enter a valid name and quantity.");
+    return;
+  }
+
+  const items = loadItems();
+  const index = items.findIndex((item) => item.id === currentEditId);
+  if (index !== -1) {
+    items[index].name = newName;
+    items[index].quantity = newQty;
+    saveItems(items);
+    renderItems();
+    editModal.hide();
+  }
+});
+
 shoppingListForm.addEventListener("submit", (event) => {
   event.preventDefault();
   const itemName = InputItem.value.trim();
   const quantity = parseInt(InputQuantity.value.trim(), 10);
+
+  if (!isValidItemName(itemName)) {
+    alert("Item name must contain at least one letter.");
+    return;
+  }
+
   if (itemName && quantity > 0) {
     addItems(itemName, quantity);
     InputItem.value = "";
-    InputQuantity.value = "1";
+    InputQuantity.value = "0";
     InputItem.focus();
     renderItems();
   }

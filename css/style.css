@@ -46,6 +46,8 @@ input:hover {
   transition: all 0, 2s ease-in-out;
 }
 
+.btn-delete,
+.btn-cancel,
 .btn-minus {
   background-color: #fbeaec;
   color: var(--red-deep);
@@ -54,11 +56,15 @@ input:hover {
   transition: all 0.2s ease-in-out;
 }
 
+.btn-delete:hover,
+.btn-cancel:hover,
 .btn-minus:hover {
   background-color: var(--red-deep);
   color: white;
 }
 
+.btn-delete:active,
+.btn-cancel:active,
 .btn-minus:active {
   background-color: #96031a;
   transform: scale(0.97);
@@ -67,6 +73,7 @@ input:hover {
 
 .btn-buy,
 .btn-add,
+.btn-save,
 .btn-plus {
   background-color: #e1f7ec;
   color: #2ecc71;
@@ -77,6 +84,7 @@ input:hover {
 
 .btn-buy:hover,
 .btn-add:hover,
+.btn-save:hover,
 .btn-plus:hover {
   background-color: #2ecc71;
   color: white;
@@ -84,6 +92,7 @@ input:hover {
 
 .btn-buy:active,
 .btn-add:active,
+.btn-save:active,
 .btn-plus:active {
   background-color: #27ae60;
   transform: scale(0.97);
@@ -95,21 +104,42 @@ input:hover {
   opacity: 0.6;
 }
 
-.btn-delete {
-  background-color: #fbeaec;
-  color: var(--red-deep);
-  border: 2px solid var(--red-deep);
+.modal-content {
+  background-color: var(--white-smoke);
+  color: var(--dark-navy);
+  border-radius: 12px;
+  border: 2px solid var(--gray-slate);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+}
+
+.modal-header,
+.modal-footer {
+  border: none;
+}
+
+.modal-title {
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 1.2rem;
+}
+
+.modal-body {
+  padding: 0 !important;
+}
+
+.modal-body label {
+  font-weight: bold;
+  margin-bottom: 0.25rem;
+}
+
+.modal-body .form-control {
+  background-color: white;
+  color: var(--dark-navy);
+  border: 2px solid var(--gray-slate);
   border-radius: 6px;
-  transition: all 0.2s ease-in-out;
 }
 
-.btn-delete:hover {
-  background-color: var(--red-deep);
-  color: white;
-}
-
-.btn-delete:active {
-  background-color: #96031a;
-  transform: scale(0.97);
-  box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+.modal-body .form-control:focus {
+  border-color: var(--red-vibrant);
+  box-shadow: 0 0 0 0.25rem rgba(239, 35, 60, 0.25);
 }
