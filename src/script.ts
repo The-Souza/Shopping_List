@@ -46,6 +46,46 @@ editDecreaseBtn.addEventListener("click", () => {
   }
 });
 
+const clearListBtn = document.getElementById("btn-clear-list") as HTMLButtonElement;
+
+clearListBtn.addEventListener("click", () => {
+  if (confirm("Are you sure you want to delete the entire list?")) {
+    localStorage.removeItem("items");
+    renderItems();
+  }
+});
+
+let lastDeletedItem: ShoppingListItem | null = null;
+
+const undoContainer = document.getElementById("undo-container")!;
+const undoBtn = document.getElementById("btn-undo") as HTMLButtonElement;
+
+const removeItem = (id: string) => {
+  const items = loadItems();
+  const itemToDelete = items.find(item => item.id === id);
+  if (!itemToDelete) return;
+
+  lastDeletedItem = itemToDelete;
+
+  const updatedItems = items.filter((item) => item.id !== id);
+  saveItems(updatedItems);
+  renderItems();
+
+  undoContainer.style.display = "block";
+};
+
+undoBtn.addEventListener("click", () => {
+  if (lastDeletedItem) {
+    const items = loadItems();
+    items.push(lastDeletedItem);
+    saveItems(items);
+    renderItems();
+
+    undoContainer.style.display = "none";
+    lastDeletedItem = null;
+  }
+});
+
 const isValidItemName = (name: string): boolean => {
   return /[a-zA-Z]/.test(name);
 };
@@ -72,12 +112,6 @@ const addItems = (name: string, quantity: number) => {
   };
   items.push(newItem);
   saveItems(items);
-};
-
-const removeItem = (id: string) => {
-  const items = loadItems();
-  const updatedItems = items.filter((item) => item.id !== id);
-  saveItems(updatedItems);
 };
 
 const editItem = (id: string, newName: string, bought?: boolean) => {
