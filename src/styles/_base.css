@@ -1,0 +1,33 @@
+body {
+    background-color: var(--dark-navy);
+    padding: 0 !important;
+}
+
+.card {
+    background-color: var(--white-smoke);
+    color: var(--dark-navy);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.25);
+}
+
+input.form-control {
+    border: 2px solid var(--gray-slate);
+    border-radius: 6px;
+    background-color: white;
+    color: var(--dark-navy);
+}
+
+input.form-control:focus {
+    border-color: var(--red-vibrant);
+    box-shadow: 0 0 0 0.25rem rgba(239, 35, 60, 0.25);
+}
+
+input::placeholder {
+    color: var(--gray-slate);
+    opacity: 0.8;
+    font-style: italic;
+}
+
+input:hover {
+    border-color: var(--blue-light);
+    box-shadow: 0 0 0 0.15rem rgba(108, 166, 193, 0.3);
+}

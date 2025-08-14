@@ -1,0 +1,16 @@
+:root {
+    --dark-navy: #2b2d42;
+    --gray-slate: #8d99ae;
+    --white-smoke: #edf2f4;
+
+    --red-vibrant: #ef233c;
+    --red-deep: #d90429;
+
+    --green-light: #e1f7ec;
+    --green-dark: #2ecc71;
+    --green-active: #27ae60;
+
+    --blue-light: #5dade2;
+    --blue-dark: #4a90c7;
+    --blue-active: #3774a3;
+}

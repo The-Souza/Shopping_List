@@ -1,0 +1,77 @@
+.btn-delete,
+.btn-cancel,
+.btn-minus {
+    background-color: #fbeaec;
+    color: var(--red-deep);
+    border: 2px solid var(--red-deep);
+    border-radius: 6px;
+    transition: all 0.2s ease-in-out;
+}
+
+.btn-delete:hover,
+.btn-cancel:hover,
+.btn-minus:hover {
+    background-color: var(--red-deep);
+    color: white;
+}
+
+.btn-delete:active,
+.btn-cancel:active,
+.btn-minus:active {
+    background-color: #96031a !important;
+    color: white !important;
+    border-color: #96031a !important;
+    box-shadow: inset 0 3px 5px rgba(0,0,0,0.125);
+    transform: scale(0.97);
+}
+
+.btn-buy,
+.btn-add,
+.btn-save,
+.btn-plus {
+    background-color: var(--green-light);
+    color: var(--green-dark);
+    border: 2px solid var(--green-dark);
+    border-radius: 6px;
+    transition: all 0.2s ease-in-out;
+}
+
+.btn-buy:hover,
+.btn-add:hover,
+.btn-save:hover,
+.btn-plus:hover {
+    background-color: var(--green-dark);
+    color: white;
+}
+
+.btn-buy:active,
+.btn-add:active,
+.btn-save:active,
+.btn-plus:active {
+    background-color: var(--green-active) !important;
+    color: white !important;
+    border-color: var(--green-active) !important;
+    box-shadow: inset 0 3px 5px rgba(0,0,0,0.125);
+    transform: scale(0.97);
+}
+
+.btn-undo {
+    background-color: var(--blue-light);
+    color: white;
+    border: 2px solid var(--blue-dark);
+    border-radius: 6px;
+    transition: all 0.2s ease-in-out;
+}
+
+.btn-undo:hover {
+    background-color: var(--blue-dark);
+    color: white;
+}
+
+.btn-undo:active {
+    background-color: var(--blue-active) !important;
+    color: white !important;
+    border-color: var(--blue-dark) !important;
+    box-shadow: inset 0 3px 5px rgba(0,0,0,0.125);
+    transform: scale(0.97);
+}

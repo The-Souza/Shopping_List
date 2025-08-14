@@ -1,0 +1,11 @@
+.list-group-item {
+    background-color: white;
+    border: 2px solid var(--gray-slate);
+    color: var(--dark-navy);
+    transition: all 0.2s ease-in-out;
+}
+
+.bought span {
+    text-decoration: line-through;
+    opacity: 0.6;
+}
