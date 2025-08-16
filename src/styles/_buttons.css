@@ -2,7 +2,8 @@ button {
     border-radius: 6px;
     transition: all 0.2s ease-in-out;
     cursor: pointer;
-    outline: none;
+    outline: none !important;
+    box-shadow: none !important;
     -webkit-tap-highlight-color: transparent;
 }
 
@@ -26,9 +27,9 @@ button {
 .btn-delete:active,
 .btn-cancel:active,
 .btn-minus:active {
-    background-color: #96031a;
-    color: white;
-    border-color: #96031a;
+    background-color: #96031a !important;
+    color: white !important;
+    border-color: #96031a !important;
     box-shadow: inset 0 3px 5px rgba(0,0,0,0.125);
     transform: scale(0.97);
 }
@@ -56,9 +57,9 @@ button {
 .btn-add:active,
 .btn-save:active,
 .btn-plus:active {
-    background-color: var(--green-active);
-    color: white;
-    border-color: var(--green-active);
+    background-color: var(--green-active) !important;
+    color: white !important;
+    border-color: var(--green-active) !important;
     box-shadow: inset 0 3px 5px rgba(0,0,0,0.125);
     transform: scale(0.97);
 }
@@ -76,9 +77,9 @@ button {
 }
 
 .btn-undo:active {
-    background-color: var(--blue-active);
-    color: white;
-    border-color: var(--blue-dark);
+    background-color: var(--blue-active) !important;
+    color: white !important;
+    border-color: var(--blue-dark) !important;
     box-shadow: inset 0 3px 5px rgba(0,0,0,0.125);
     transform: scale(0.97);
 }

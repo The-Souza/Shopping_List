@@ -22,14 +22,17 @@ const undoBtn = document.getElementById("btn-undo") as HTMLButtonElement;
 
 let currentEditId: string | null = null;
 
+document.querySelectorAll("button").forEach((btn) => {
+    btn.addEventListener("touchstart", () => btn.blur());
+});
+
 export const renderItems = (): void => {
     const items = loadItems();
     shoppingList.innerHTML = "";
 
     items.forEach((item) => {
         const li = document.createElement("li");
-        li.className =
-            "list-group-item d-flex justify-content-between align-items-center";
+        li.className = "list-group-item d-flex justify-content-between align-items-center";
         if (item.bought) li.classList.add("bought");
 
         li.innerHTML = `
