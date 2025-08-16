@@ -2,8 +2,8 @@
 button {
     border-radius: 6px;
     transition: all 0.2s ease-in-out;
-    outline: none; /* Remove outline padrão */
     cursor: pointer;
+    outline: none; /* Remove outline padrão do navegador */
 }
 
 /* ==================== DELETE / CANCEL / MINUS ==================== */
@@ -15,7 +15,7 @@ button {
     border: 2px solid var(--red-deep);
 }
 
-/* Hover desktop */
+/* Hover apenas em dispositivos com hover */
 @media (hover: hover) {
     .btn-delete:hover,
     .btn-cancel:hover,
@@ -36,7 +36,7 @@ button {
     transform: scale(0.97);
 }
 
-/* Remove foco visual */
+/* Remove focus visual sem tocar no background/color */
 .btn-delete:focus,
 .btn-cancel:focus,
 .btn-minus:focus {
@@ -54,7 +54,6 @@ button {
     border: 2px solid var(--green-dark);
 }
 
-/* Hover desktop */
 @media (hover: hover) {
     .btn-buy:hover,
     .btn-add:hover,
@@ -65,7 +64,6 @@ button {
     }
 }
 
-/* Active / tap */
 .btn-buy:active,
 .btn-add:active,
 .btn-save:active,
@@ -77,7 +75,6 @@ button {
     transform: scale(0.97);
 }
 
-/* Remove foco visual */
 .btn-buy:focus,
 .btn-add:focus,
 .btn-save:focus,
@@ -93,14 +90,12 @@ button {
     border: 2px solid var(--blue-dark);
 }
 
-/* Hover desktop */
 @media (hover: hover) {
     .btn-undo:hover {
         background-color: var(--blue-dark);
     }
 }
 
-/* Active / tap */
 .btn-undo:active {
     background-color: var(--blue-active);
     color: white;
@@ -109,7 +104,6 @@ button {
     transform: scale(0.97);
 }
 
-/* Remove foco visual */
 .btn-undo:focus {
     outline: none;
     box-shadow: none;
