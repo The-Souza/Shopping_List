@@ -18,7 +18,6 @@ const editModalElement = document.getElementById("editModal")!;
 const editModal = new (window as any).bootstrap.Modal(editModalElement);
 
 const clearListBtn = document.getElementById("btn-clear-list") as HTMLButtonElement;
-const undoContainer = document.getElementById("undo-container")!;
 const undoBtn = document.getElementById("btn-undo") as HTMLButtonElement;
 
 let currentEditId: string | null = null;
@@ -29,8 +28,7 @@ export const renderItems = (): void => {
 
     items.forEach((item) => {
         const li = document.createElement("li");
-        li.className =
-            "list-group-item d-flex justify-content-between align-items-center";
+        li.className = "list-group-item d-flex justify-content-between align-items-center";
         if (item.bought) li.classList.add("bought");
 
         li.innerHTML = `
@@ -44,7 +42,6 @@ export const renderItems = (): void => {
         li.querySelector(".btn-delete")?.addEventListener("click", () => {
             removeItem(item.id);
             renderItems();
-            undoContainer.style.display = "block";
         });
 
         li.querySelector(".btn-buy")?.addEventListener("click", () => {
@@ -63,40 +60,37 @@ export const renderItems = (): void => {
     });
 };
 
-IncreaseBtn.addEventListener("click", () => {
+IncreaseBtn?.addEventListener("click", () => {
     InputQuantity.value = (parseInt(InputQuantity.value, 10) + 1).toString();
 });
 
-DecreaseBtn.addEventListener("click", () => {
+DecreaseBtn?.addEventListener("click", () => {
     const value = parseInt(InputQuantity.value, 10);
     if (value > 1) InputQuantity.value = (value - 1).toString();
 });
 
-editIncreaseBtn.addEventListener("click", () => {
-    editItemQtyInput.value = (
-        parseInt(editItemQtyInput.value, 10) + 1
-    ).toString();
+editIncreaseBtn?.addEventListener("click", () => {
+    editItemQtyInput.value = (parseInt(editItemQtyInput.value, 10) + 1).toString();
 });
 
-editDecreaseBtn.addEventListener("click", () => {
+editDecreaseBtn?.addEventListener("click", () => {
     const value = parseInt(editItemQtyInput.value, 10);
     if (value > 1) editItemQtyInput.value = (value - 1).toString();
 });
 
-clearListBtn.addEventListener("click", () => {
+clearListBtn?.addEventListener("click", () => {
     if (confirm("Are you sure you want to delete the entire list?")) {
         clearItems();
         renderItems();
     }
 });
 
-undoBtn.addEventListener("click", () => {
+undoBtn?.addEventListener("click", () => {
     undoDelete();
     renderItems();
-    undoContainer.style.display = "none";
 });
 
-saveEditBtn.addEventListener("click", () => {
+saveEditBtn?.addEventListener("click", () => {
     if (!currentEditId) return;
 
     const newName = editItemNameInput.value.trim();
@@ -112,7 +106,7 @@ saveEditBtn.addEventListener("click", () => {
     editModal.hide();
 });
 
-shoppingListForm.addEventListener("submit", (e) => {
+shoppingListForm?.addEventListener("submit", (e) => {
     e.preventDefault();
     const name = InputItem.value.trim();
     const qty = parseInt(InputQuantity.value.trim(), 10);
