@@ -22,6 +22,10 @@ const undoBtn = document.getElementById("btn-undo") as HTMLButtonElement;
 
 let currentEditId: string | null = null;
 
+document.querySelectorAll("button").forEach((btn) => {
+  btn.addEventListener("touchstart", () => btn.blur());
+});
+
 export const renderItems = (): void => {
     const items = loadItems();
     shoppingList.innerHTML = "";
@@ -33,12 +37,12 @@ export const renderItems = (): void => {
         if (item.bought) li.classList.add("bought");
 
         li.innerHTML = `
-      <span class="text-capitalize">${item.name} (Qty: ${item.quantity})</span>
-      <div class="d-flex justify-content-end align-items-center gap-2">
-        <button class="btn-buy btn btn-sm"><i class="bi bi-cash-coin fs-5"></i></button>
-        <button class="btn-delete btn btn-outline-danger btn-sm"><i class="bi bi-trash fs-5"></i></button>
-      </div>
-    `;
+          <span class="text-capitalize">${item.name} (Qty: ${item.quantity})</span>
+          <div class="d-flex justify-content-end align-items-center gap-2">
+            <button class="btn-buy btn btn-sm"><i class="bi bi-cash-coin fs-5"></i></button>
+            <button class="btn-delete btn btn-outline-danger btn-sm"><i class="bi bi-trash fs-5"></i></button>
+          </div>
+        `;
 
         li.querySelector(".btn-delete")?.addEventListener("click", () => {
             removeItem(item.id);
@@ -65,13 +69,16 @@ export const renderItems = (): void => {
 IncreaseBtn.addEventListener("click", () => {
     InputQuantity.value = (parseInt(InputQuantity.value, 10) + 1).toString();
 });
+
 DecreaseBtn.addEventListener("click", () => {
     const value = parseInt(InputQuantity.value, 10);
     if (value > 1) InputQuantity.value = (value - 1).toString();
 });
+
 editIncreaseBtn.addEventListener("click", () => {
     editItemQtyInput.value = (parseInt(editItemQtyInput.value, 10) + 1).toString();
 });
+
 editDecreaseBtn.addEventListener("click", () => {
     const value = parseInt(editItemQtyInput.value, 10);
     if (value > 1) editItemQtyInput.value = (value - 1).toString();
