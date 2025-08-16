@@ -15,21 +15,34 @@ Uma aplicação web simples para gerenciar sua lista de compras. Permite adicion
 
 ```bash
 .
-├── css
-│   └── style.css
 ├── img
 │   ├── img1.png
 │   ├── img2.png
 │   └── img3.png
+├── node_modules
 ├── public
 │   ├── mart.png
 │   └── vite.svg
 ├── src
-│   └── script.ts
+│   ├── logic
+│   │   ├── logic.ts
+│   │   ├── storage.ts
+│   │   └── ui.ts
+│   ├── styles
+│   │   ├── _base.css
+│   │   ├── _buttons.css
+│   │   ├── _lists.css
+│   │   ├── _modal.css
+│   │   ├── _variables.css
+│   │   └── main.css
+│   ├── main.ts
+│   └── types.ts
 ├── index.html
-├── tsconfig.json
 ├── package.json
+├── package-lock.json
+├── tsconfig.json
 └── README.md
+
 ```
 
 ## 🛠️ Como Executar Localmente
