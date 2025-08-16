@@ -7,6 +7,12 @@ button {
     -webkit-tap-highlight-color: transparent;
 }
 
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
 .btn-delete,
 .btn-cancel,
 .btn-minus {

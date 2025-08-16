@@ -28,7 +28,6 @@ document.querySelectorAll("button").forEach((btn) => {
     });
 });
 
-
 export const renderItems = (): void => {
     const items = loadItems();
     shoppingList.innerHTML = "";
