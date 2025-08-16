@@ -1,10 +1,13 @@
+/* ==================== BUTTON BASE ==================== */
 button {
     border-radius: 6px;
     transition: all 0.2s ease-in-out;
     cursor: pointer;
-    outline: none; /* remove outline padrão */
+    outline: none; /* Remove outline padrão */
+    -webkit-tap-highlight-color: transparent; /* Remove efeito de highlight no mobile */
 }
 
+/* ==================== DELETE / CANCEL / MINUS ==================== */
 .btn-delete,
 .btn-cancel,
 .btn-minus {
@@ -13,6 +16,7 @@ button {
     border: 2px solid var(--red-deep);
 }
 
+/* Hover apenas em desktop */
 @media (hover: hover) {
     .btn-delete:hover,
     .btn-cancel:hover,
@@ -22,6 +26,7 @@ button {
     }
 }
 
+/* Active / tap */
 .btn-delete:active,
 .btn-cancel:active,
 .btn-minus:active {
@@ -32,13 +37,7 @@ button {
     transform: scale(0.97);
 }
 
-.btn-delete:focus,
-.btn-cancel:focus,
-.btn-minus:focus {
-    outline: none !important;
-    box-shadow: none !important;
-}
-
+/* ==================== BUY / ADD / SAVE / PLUS ==================== */
 .btn-buy,
 .btn-add,
 .btn-save,
@@ -69,14 +68,7 @@ button {
     transform: scale(0.97);
 }
 
-.btn-buy:focus,
-.btn-add:focus,
-.btn-save:focus,
-.btn-plus:focus {
-    outline: none !important;
-    box-shadow: none !important;
-}
-
+/* ==================== UNDO ==================== */
 .btn-undo {
     background-color: var(--blue-light);
     color: white;
@@ -97,7 +89,8 @@ button {
     transform: scale(0.97);
 }
 
-.btn-undo:focus {
+/* Remove qualquer foco visual para todos os botões */
+button:focus {
     outline: none !important;
     box-shadow: none !important;
 }
