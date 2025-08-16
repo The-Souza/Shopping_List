@@ -1,6 +1,5 @@
 import { addItem, removeItem, undoDelete, editItem } from "./logic";
 import { loadItems, clearItems } from "./storage";
-import type { ShoppingListItem } from "../types";
 
 const shoppingListForm = document.getElementById("shopping-list-form") as HTMLFormElement;
 const shoppingList = document.getElementById("shopping-list") as HTMLUListElement;
