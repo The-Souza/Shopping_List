@@ -1,17 +1,11 @@
-/* ==================== BUTTON BASE ==================== */
 button {
     border-radius: 6px;
     transition: all 0.2s ease-in-out;
     cursor: pointer;
-    outline: none; /* remove outline padrão */
-    -webkit-tap-highlight-color: transparent; /* remove highlight no mobile */
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
 }
 
-/* ==================== DELETE / CANCEL / MINUS ==================== */
 .btn-delete,
 .btn-cancel,
 .btn-minus {
@@ -32,21 +26,13 @@ button {
 .btn-delete:active,
 .btn-cancel:active,
 .btn-minus:active {
-    background-color: #96031a !important;
-    color: white !important;
-    border-color: #96031a !important;
+    background-color: #96031a;
+    color: white;
+    border-color: #96031a;
     box-shadow: inset 0 3px 5px rgba(0,0,0,0.125);
     transform: scale(0.97);
 }
 
-.btn-delete:focus,
-.btn-cancel:focus,
-.btn-minus:focus {
-    outline: none !important;
-    box-shadow: none !important;
-}
-
-/* ==================== BUY / ADD / SAVE / PLUS ==================== */
 .btn-buy,
 .btn-add,
 .btn-save,
@@ -70,22 +56,13 @@ button {
 .btn-add:active,
 .btn-save:active,
 .btn-plus:active {
-    background-color: var(--green-active) !important;
-    color: white !important;
-    border-color: var(--green-active) !important;
+    background-color: var(--green-active);
+    color: white;
+    border-color: var(--green-active);
     box-shadow: inset 0 3px 5px rgba(0,0,0,0.125);
     transform: scale(0.97);
 }
 
-.btn-buy:focus,
-.btn-add:focus,
-.btn-save:focus,
-.btn-plus:focus {
-    outline: none !important;
-    box-shadow: none !important;
-}
-
-/* ==================== UNDO ==================== */
 .btn-undo {
     background-color: var(--blue-light);
     color: white;
@@ -99,14 +76,9 @@ button {
 }
 
 .btn-undo:active {
-    background-color: var(--blue-active) !important;
-    color: white !important;
-    border-color: var(--blue-dark) !important;
+    background-color: var(--blue-active);
+    color: white;
+    border-color: var(--blue-dark);
     box-shadow: inset 0 3px 5px rgba(0,0,0,0.125);
     transform: scale(0.97);
-}
-
-.btn-undo:focus {
-    outline: none !important;
-    box-shadow: none !important;
 }
